@@ -6,6 +6,19 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="media">
+            {% if user.username == form.instance.username %}
+            <input type="file"id="id_image"name="image"hidden >
+              <label for="id_image">
+                <img src="{{form.instance.image.url}}"
+                style="cursor: pointer;"
+                 alt="" 
+                 title="Upload new image"
+                class="rounded-circle account-img profile-image">
+              </label>
+            {% else %}
+            <img src="{{form.instance.image.url}}" alt="" class="rounded-circle account-img profile-image">
+            {% endif %}
+            
             <div class="media-body">
                 <h2 class="account-heading">{{ form.instance.username }}
                     <small class="text-muted">({{ form.instance.status }})</small>
