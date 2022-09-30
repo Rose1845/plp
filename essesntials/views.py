@@ -1,6 +1,7 @@
 from multiprocessing import context
 
 from django.shortcuts import render
+from django.shortcuts import redirect
 from .models import Article,ArticleSeries
 # Create your views here.s
 def homepage(request):
@@ -21,3 +22,23 @@ def article(request,series:str ,article:str ):
     return render(request=request,
     template_name = 'main/article.html',
     context ={"objects":matching_article})
+
+
+
+
+    def new_series(request):
+        return redirect("/")
+
+    def new_post(request):
+        return redirect('/')
+    
+    def series_update(request,series):
+        return redirect('/')
+
+    def series_delete(request,series):
+        return redirect('/')
+    
+    def article_update(request,article,series) :
+        return redirect
+    def article_delete(request,article,series):
+        return redirect
