@@ -2,7 +2,6 @@
 from django.urls import path
 from . import views
 
-
 urlpatterns=[
     path('',views.homepage,name="homepage"),
     path('new_series',views.new_series,name="series-create"),

@@ -16,12 +16,26 @@
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="/">
+                    {% if user.is_authenticated %}
+                    {% if user.is_superuser%}
+                    <a href="admin/"class="nav-item van-link">Admin</a>
+                    <a href="{% url 'series_create' %}"class="nav-item van-link">New Series</a>
+                    <a href="{% url 'post_create' %}"class="nav-item van-link">New Series</a>
+                    {% endif%}
+                    <a class="nav-item nav-link" href="{% url 'profile' user.username %}">
+                        {{user.username}} <i class="fas fa-user"></i>
+                    </a>
+                     <a class="nav-item nav-link" href="{% url 'logout'%}">
+                       Log Out <i class="fas fa-sign-in-alt"></i>
+                     </a>
+                     {% else %}
+                     <a class="nav-item nav-link" href="/login">
                         Log in <i class="fas fa-sign-in-alt"></i>
                     </a>
-                    <a class="nav-item nav-link" href="/">
+                    <a class="nav-item nav-link" href="/register">
                         Sign up <i class="fas fa-user-plus"></i>
                     </a>
+                     {% endif %}
                 </div>
             </div>
         </div>

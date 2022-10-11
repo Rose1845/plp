@@ -9,7 +9,6 @@ class ArticleSeriesAdmin(admin.ModelAdmin):
         'slug',
         'author',
         'image',
-
         # 'published'
     ]
 class ArticleAdmin(admin.ModelAdmin):
@@ -25,6 +24,5 @@ class ArticleAdmin(admin.ModelAdmin):
         # 'modified',
         # 'series'
     ]
-
 admin.site.register(Article,ArticleAdmin)
 admin.site.register(ArticleSeries,ArticleSeriesAdmin)

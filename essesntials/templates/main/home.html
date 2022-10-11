@@ -6,13 +6,28 @@
             <article class="media content-section customhover" style="height: 95%;">
                 <div class="media-body">
                     <a href="/{{object.slug}}">
-                        <img class="img-fluid" src="{{object.image.url }}">
+                        <div class="aspect-ratio">
+                            <img class="img-fluid" src="{{object.image.url }}">
+                        </div>
+                        
                     </a>
                     <div class="d-flex article-metadata">
                         <a href="{% url 'profile' object.author %}"class="mr-2">
                             {{object.author}}
                         </a>
                         <small class="text-muted">Published {{object.published|date:"F d, Y"}}</small>
+                       
+                        {% if object.author == user %}
+                        <div style="float:right ;">
+                            {% if type == "series" %}
+                            <a href="{% url 'series_update' object.slug %}" class="btn btncolor btn-sm mt-1 mb-1">UPDATE</a>
+                            <a href="{% url 'series_delete' object.slug %}" class="btn btn-danger color btn-sm mt-1 mb-1">DELETE</a>
+                            {% else %}
+                            <a href="{% url 'article_update' object.slug %}" class="btn btncolor btn-sm mt-1 mb-1">UPDATE</a>
+                            <a href="{% url 'article_delete' object.slug %}" class="btn btn-danger btn-sm mt-1 mb-1">DELETE</a>
+                            {%  endif %}
+                        </div>
+                        {% endif %}
                     </div>
                     <div>
                         <a class="article-title line-clamp-2 title-style" style="font-size: 22px" href="/{{object.slug}}">
@@ -23,6 +38,7 @@
                         </a>
                     </div>
                 </div>
+
             </article>
         </div>
     {% endfor %}

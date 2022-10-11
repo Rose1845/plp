@@ -78,12 +78,12 @@ def profile(request,username):
             user_form = form.save()
             messages.success(request,f'{user_form.username},Your profile has been updated')
             return redirect("profile",user_form.username)
-        for error in list(form.erroes.values()):
+        for error in list(form.errors.values()):
             messages.error(request,error)
 
 
-    if request.method == "POST":
-        pass
+    # if request.method == "POST":
+    #     pass
     user = get_user_model().objects.filter(username=username).first()
     if user:
         form = UserUpdateForm(instance=user)

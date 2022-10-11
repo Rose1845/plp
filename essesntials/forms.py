@@ -14,7 +14,7 @@ class SeriesCreateForm(forms.ModelForm):
         ]
 class ArticleCreateForm(forms.ModelForm):
     class Meta:
-        model = ArticleSeries
+        model = Article
 
         fields=[
             'title',
@@ -32,11 +32,11 @@ class SeriesUpdateForm(forms.ModelForm):
         fields=[
             'title',
             'subtitle',
-            'image'
+            'image',
         ]
 class ArticleUpdateForm(forms.ModelForm):
     class Meta:
-        model = ArticleSeries
+        model = Article
 
         fields=[
             'title',

@@ -8,6 +8,22 @@
                 <h2 class="subtitle-style">{{ object.subtitle }}</h2>
             </div>
         </div>
+        <div class="d-flex article-metadata">
+            <div>
+                <a href="{% url 'profile' object.author %}"class="mr-2">
+                    {{object.author}}
+                </a>
+                <small class="text-muted">Published {{object.published|date:"F d, Y"}}</small>
+            </div>
+            
+            {% if object.author == user %}
+            <div class="ml-auto">
+                <a href="{% url 'article_update' object.article_slug %}" class="btn btncolor btn-sm mt-1 mb-1">UPDATE</a>
+                <a href="{% url 'article_delete' object.article_slug %}" class="btn btn-danger btn-sm mt-1 mb-1">DELETE</a>
+                
+            </div>
+            {% endif %}
+        </div>
     </div>
     <div class="col-lg-9 col-md-12 col-sm-12" id="content">
         <div class="article-style">
