@@ -11,6 +11,9 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponse
 
+def activateEmail(request,user,to_email):
+    messages.success(request,f'Dear <b> {user}</b>,Please go to your email <b>{to_email}</b> inbox and click on recieived activation link to confirm and complete the registration.<b>Note:</b> check spam folder')
+
 @user_not_authenticated
 def register(request):
     if request.user.is_authenticated:
@@ -19,10 +22,14 @@ def register(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request,user)
-            messages.success(request,f"A new account created {user.username}")
-            return redirect('/')
+            user = form.save(commit=False)
+            user.is_active= False
+            user.save()
+            activateEmail(request,user,form.cleaned_data.get('email'))
+            return redirect('homepage')
+            # login(request,user)
+            # messages.success(request,f"A new account created {user.username}")
+            # return redirect('/')
         else:
             for error in list(form.errors.values()):
                 messages.error(request,error)

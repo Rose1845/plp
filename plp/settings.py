@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 
+from django.conf import PASSWORD_RESET_TIMEOUT_DAYS_DEPRECATED_MSG
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -135,6 +137,16 @@ MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
 AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FROM = 'odhiamborose466@gmail.com'
+EMAIL_HOST_USER = 'odhiamborose466@mail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD='rfhjyizysuhxsgxj'
+
+PASSWORD_RESET_TIMEOOUT = 14400
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
