@@ -41,9 +41,9 @@ INSTALLED_APPS = [
     'essesntials',
     'users',
     'tinymce',
-    'fontawesomefree',
-    "crispy_forms",
-    'captcha'
+    # "fontawesomefree",
+    # "crispy_forms",
+    # 'captcha'
 ]
 AUTH_USER_MODEL = 'users.CustomUser'
 
